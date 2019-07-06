@@ -22,9 +22,8 @@ function getUrl(u) {
   x.send();
 }
 
-var domain = 'internetmoney.me';
-//var api = 'e4bc2cce6f6863d4b703c5ba58ff311546a051fc';
-var api = '22789cc5be648a2a1ab396d893b762ace29e4d53'; //komikindo.web.id
+var domain = 'idsly.bid';
+var api = 'e4bc2cce6f6863d4b703c5ba58ff311546a051fc';
 var input = document.querySelector('.sflink .domain');
 var result = document.querySelector('.sflink .result');
 
