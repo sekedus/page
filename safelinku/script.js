@@ -1,4 +1,9 @@
 function showResult(u) {
+  if (u == '') {
+    result.classList.add('error');
+    result.innerHTML = 'Error!';
+    return;
+  }
   result.innerHTML = '<input type="text" class="url" placeholder="' + u +'" value="' + u +'"/><button id="copy">Copy</button>';
   
   copy.onclick = function() {
