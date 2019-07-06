@@ -22,13 +22,15 @@ function getUrl(u) {
   x.send();
 }
 
-var api = 'e4bc2cce6f6863d4b703c5ba58ff311546a051fc';
+var domain = 'internetmoney.me';
+//var api = 'e4bc2cce6f6863d4b703c5ba58ff311546a051fc';
+var api = '22789cc5be648a2a1ab396d893b762ace29e4d53'; //komikindo.web.id
 var input = document.querySelector('.sflink .domain');
 var result = document.querySelector('.sflink .result');
 
 generate.onclick = function () {
   if ((input.value == '') || (input.value.indexOf('http') == -1)) {return alert('Please enter a valid URL')}
-  var link = 'https://sfl.ink/st/?api=' + api + '&url=' + encodeURIComponent(input.value);
+  var link = 'https://' + domain + '/st/?api=' + api + '&url=' + encodeURIComponent(input.value);
   result.classList.remove('no-items');
   result.innerHTML = 'loading...';
   getUrl(link);
