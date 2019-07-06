@@ -7,8 +7,7 @@ button{background:#cfd8dc;border:1px solid #b0bec5;}
 .flex-wrap{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
 .center{text-align:center;-webkit-justify-content:center;justify-content:center;}
 .no-items{display:none;}
-
-.sflink{max-width:730px;padding:15px;margin:0 auto;}
+.sflink{max-width:760px;padding:15px;margin:0 auto;}
 .sflink .title h1{font-size:20px;margin:5px 0 25px;text-align:center;}
 .sflink .input input{width:80%;padding:5px 10px;margin:0 5px 0 0;border:1px solid #b0bec5;}
 .sflink .input button{width:20%;}
