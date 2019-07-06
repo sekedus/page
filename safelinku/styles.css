@@ -10,7 +10,7 @@ button{background:#cfd8dc;border:1px solid #b0bec5;}
 .sflink{max-width:760px;padding:15px;margin:30px auto 0;}
 .sflink .title h1{font-size:20px;margin:5px 0 25px;text-align:center;}
 .sflink .input input{width:80%;padding:5px 10px;margin:0 5px 0 0;border:1px solid #b0bec5;}
-.sflink .input button{width:20%;}
+.sflink .input button{width:20%;cursor:pointer;}
 .sflink .result{margin:20px 0 0;}
 .sflink .result input{background:transparent;padding:5px 0;width:100%;border:0;border-bottom:1px solid #b0bec5;}
 .sflink .result input:focus{outline:0;}
