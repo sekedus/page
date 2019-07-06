@@ -16,6 +16,6 @@ button{background:#cfd8dc;border:1px solid #b0bec5;}
 .sflink .result input:focus{outline:0;}
 .sflink .result button{width:25%;padding:5px 10px;margin:15px 0 0;}
 .sflink .tools{margin:30px 0 0;}
-.sflink .social{margin:40px 0 0;}
+.sflink .social{margin:20px 0;}
 .sflink .social a{display:inline-block;color:#37474f;font-size:13px;height:26px;width:26px;line-height:22px;margin:0 0 0 10px;border:1px solid #b0bec5;border-radius:4px;}
 .sflink .social img{margin:4px 0 0;opacity:0.8;}
