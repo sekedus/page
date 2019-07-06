@@ -1,13 +1,15 @@
 *,*:before,*:after{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box;}
 body{background:#e1e8ec;font-size:14px;line-height:22px;color:#37474f;font-family:Roboto, Verdana, sans-serif;position:relative;}
 a,a:link,a:visited{color:#4774a7;text-decoration:none;}
+ol,ul{list-style:none;}
 button{background:#cfd8dc;border:1px solid #b0bec5;}
 .flex{display:-webkit-flex;display:flex;}
 .flex-wrap{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;}
 .center{text-align:center;-webkit-justify-content:center;justify-content:center;}
 .no-items{display:none;}
-.sflink{max-width:600px;padding:15px;margin:0 auto;}
-.sflink .title{font-size:20px;margin:5px 0 25px;text-align:center;}
+
+.sflink{max-width:730px;padding:15px;margin:0 auto;}
+.sflink .title h1{font-size:20px;margin:5px 0 25px;text-align:center;}
 .sflink .input input{width:80%;padding:5px 10px;margin:0 5px 0 0;border:1px solid #b0bec5;}
 .sflink .input button{width:20%;}
 .sflink .result{margin:20px 0 0;}
@@ -15,3 +17,6 @@ button{background:#cfd8dc;border:1px solid #b0bec5;}
 .sflink .result input:focus{outline:0;}
 .sflink .result button{width:25%;padding:5px 10px;margin:15px 0 0;}
 .sflink .tools{margin:30px 0 0;}
+.sflink .social{margin:40px 0 0;}
+.sflink .social a{display:inline-block;color:#37474f;font-size:13px;height:26px;width:26px;line-height:22px;margin:0 0 0 10px;border:1px solid #b0bec5;border-radius:4px;}
+.sflink .social img{margin:4px 0 0;opacity:0.8;}
