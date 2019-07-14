@@ -4,6 +4,7 @@ function showResult(u) {
     result.innerHTML = 'Error!';
     return;
   }
+  u = u.replace(/(https?:\/\/)(?:www\.)?([^\/]*\/)[^\?]*\?a\=(.*)/, '$1$2$3');
   result.innerHTML = '<input type="text" class="url" placeholder="' + u +'" value="' + u +'"/><button id="copy">Copy</button>';
   
   copy.onclick = function() {
