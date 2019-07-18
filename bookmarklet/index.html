@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="A simple web based tool to convert JavaScript into a bookmarklet and optionally include external scripts, like jQuery. There is an automated demo included at the bottom of the page.">
+<title>Bookmarklet Creator with Script Includer</title>
+<link rel="stylesheet" type="text/css" media="screen" href="./style.css">
+<link rel="icon" type="image/png" href="./favicon.png">
+</head>
+<body class="blog post_detail">
+<div class="post">
+  <div class="header">
+    <p class="source"><a href="https://mrcoles.com/bookmarklet/" target="_blank" title="Source">Source</a></p>
+    <h1 class="full">Bookmarklet Creator with Script Includer</h1>
+  </div>
+<div class="content prose">
+  <style>
+    #bk-form { margin-bottom: 20px; }
+    #bk-form textarea, #bk-results textarea { box-sizing: border-box; width: 100%; max-width: 800px; height: 100px; }
+    #bk-results { position: relative; padding-top: 20px; overflow: hidden; }
+    #bk-results p { margin: 0; }
+    #bk-result { height: 150px; }
+    #bk-opts { max-width: 800px; margin-bottom: 20px; }
+    #bk-opts li { line-height: 40px; }
+    #bk-opts label { display: inline; }
+    #bk-opts input.text { float: right; box-sizing: border-box; height: 27px; width: 600px; }
+    #bk-form textarea.focus, #bk-form input.focus, #bk-form button.focus { border-color: #00f; font-weight: bold; }
+    @media (max-width: 640px) { #bk-opts input.text { float: none; display: block; width: 100%; } }
+  </style>
+  <form id="bk-form" action="javascript://">
+    <p style="margin:0;">Enter your javascript code here:</p>
+    <textarea id="bk-code">alert("test!")</textarea>
+    <ul id="bk-opts" class="no-disc">
+    <li class="clearfix">
+      <label for="bk-name">Name:</label> 
+      <input id="bk-name" type="text" class="text" value="this link">
+    </li>
+    <li class="clearfix">
+      <label><input type="checkbox" id="bk-custom"> include custom script: </label>
+      <input id="bk-custom-url" type="text" class="text">
+    </li>
+    <li class="clearfix">
+      <label><input type="checkbox" id="bk-jquery" data-jquery-url="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> include jQuery (1.11.1)</label>
+    </li>
+    <li class="clearfix">
+      <button type="submit">Convert to bookmarklet</button>
+    </li>
+  </ul>
+</form>
+  <div id="bk-results"></div>
+  <script src="./jquery.min.js"></script>
+  <script src="./bookmarklet-creator.js"></script>
+  <br><br><br>
+<h3>Why have a bookmarklet creator?</h3>
+<p>I think <a href="http://mrcoles.com/search/?q=bookmarklet">bookmarklets</a> are great! However, it’s a pain to smoosh your JavaScript into one line and properly URI encode everything. It’s <em>even more</em> of a pain if you want to rely on external scripts in your bookmarklet. Fortunately, I have just packaged all of these features into the above tool!</p>
+<ol>
+<li>Enter your JavaScript code</li>
+<li>Choose if you want to include jQuery* and/or specify an external script</li>
+<li>Create your bookmarklet!</li>
+</ol>
+<p class="small">*Note: the jQuery include takes advantage of <a href="http://api.jquery.com/jQuery.noConflict/">jQuery.noConflict</a>.</p>
+<h3>Custom Script Example</h3>
+<p>What’s that? You’d like a silly and trivial example of someone using the custom script option? Well, OK… I wrote a script that throws the sea dragon from the header of my website onto any page and scrolls it in a marquee (for browsers that still support marquee…). You can run it in HTML as such:</p>
+<div class="codehilite"><pre>&lt;script type="text/javascript" src="https://mrcoles.com/media/js/seadragon.js"&gt;&lt;/script&gt;
+&lt;a href="#" onclick="window.SeaDragon.add();return false;"&gt;
+    Add sea dragon!
+&lt;/a&gt;</pre></div>
+<p>Let’s instead turn that into a bookmarklet:</p>
+<ol>
+<li>Enter the proper function call in the bookmarklet code section: <code id="corn-code">window.SeaDragon.add()</code></li>
+<li>Enter the JS file path as the custom script: <code id="corn-script">https://mrcoles.com/media/js/seadragon.js</code></li>
+<li>Create the bookmarklet (no jQuery required)</li>
+<li>Profit!!</li>
+</ol>
+<p>Lazy? Let me <strong><a href="https://mrcoles.com/bookmarklet/#" onclick="return false" id="corn-link">automatically fill that out for you above</a></strong> <em>(seriously, click on that link…)</em></p>
+<p><br></p>
+<h3>Want to run this server-side?</h3>
+<p>If you want to use this for proper coding or development, then try the <a href="https://github.com/mrcoles/bookmarklet">bookmarklet NPM dependency</a>. It allows you to write a bookmarklet as regular JS with some extra features to auto-include scripts or styles.</p>
+<p><strong>Update (March 2018):</strong> I used to use Cornify in my example, but I changed it to use my own script in order to limit external scripts that run on my site!</p></div>
+</div>
+</body>
+</html>
