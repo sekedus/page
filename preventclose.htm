@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<style>
+body{background:#131a22;color:#9fa6ad;padding:50px 20px;margin:0;font-family:Helvetica, Verdana, Arial, sans-serif;}
+a,a:visited{color:#4c9ce2;}
+mark{background-color:#d0973c;color:#131a22;}
+#prevent-click{width:100%;font-weight:bold;text-align:center;}
+#desc{line-height:40px;font-size:1.5em;margin-bottom:20px;}
+#click{font-size:2em;padding:50px 20px;}
+#check .clicked{color:red;}
+#check .clicked.active{color:#63aa55;}
+</style>
+</head>
+<body>
+<div id="prevent-click">
+<div id="desc">Just leave this tab open and your browser won't be closed automatically</div>
+<div id="note">NOTE:Due to a change in the API of Chrome, you will need to <mark>click anywhere on this page once</mark> to make this script work.</div>
+<div id="click">Click <a href="javascript:void(0)">here</a></div>
+<div id="check">clicked: <span class="clicked">false</span></div>
+</div>
+<script>
+// Source:https://maki-chan.de/preventclosenodonations.htm
+window.onbeforeunload = function() { return 'Would you really like to close your browser?'; }
+function clicked(e) {
+  if (e.type == 'mousedown' && e.button != '1') return;
+  var chk_click = document.querySelector('#check .clicked');
+  chk_click.innerHTML = 'true';
+  chk_click.classList.add('active');
+  //console.log(e.type +', '+ e.button);
+}
+document.body.addEventListener('click', clicked); //left click
+document.body.addEventListener('contextmenu', clicked); //right click
+document.body.addEventListener('mousedown', clicked); //mouse middle click
+</script>
+</body>
+</html>
