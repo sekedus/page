@@ -5,11 +5,13 @@
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <title>Prevent chrome from closing all tabs</title>
 <style>
-body{background:#131a22;color:#9fa6ad;padding:50px 20px;margin:0;font-family:Helvetica, Verdana, Arial, sans-serif;}
+html,body{height:100%;}
+body{background:#131a22;color:#9fa6ad;margin:0;font-family:monospace;}
+*,*:before,*:after{outline:0;-webkit-box-sizing:border-box;box-sizing:border-box;}
 a,a:visited{color:#4c9ce2;}
 mark{background-color:#d0973c;color:#131a22;}
-#prevent-click{width:100%;font-weight:bold;text-align:center;}
-#desc{line-height:40px;font-size:1.5em;margin-bottom:20px;}
+#prevent-click{width:100%;height:100%;font-weight:bold;text-align:center;padding:50px 20px;}
+#desc,#check{line-height:40px;font-size:1.7em;margin-bottom:20px;}
 #click{font-size:2em;padding:50px 20px;}
 #check .clicked{color:red;}
 #check .clicked.active{color:#63aa55;}
