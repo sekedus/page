@@ -9,13 +9,20 @@
   }
   
   function setDevURLValue(newURL) {
-    urlEl.classList.add('valid');
-    urlEl.classList.remove('invalid');
+    var event = document.createEvent('HTMLEvents');
+    devEl.value  = encodeURI(newURL);
+    event.initEvent('change', true, false);
+    devEl.dispatchEvent(event);
+    
+    if (newURL != '') {
+      devEl.select();
+      
+      urlEl.classList.add('valid');
+      urlEl.classList.remove('invalid');
   
-    devEl.classList.add('valid');
-    devEl.classList.remove('invalid');
-    devEl.value = newURL;
-    devEl.select();
+      devEl.classList.add('valid');
+      devEl.classList.remove('invalid');
+    }
   }
   
   function invalidURL(empty) {
@@ -25,6 +32,7 @@
     } else {
       urlEl.classList.add('invalid');
     }
+    setDevURLValue('');
     devEl.classList.remove('valid');
     devEl.value = '';
   }
