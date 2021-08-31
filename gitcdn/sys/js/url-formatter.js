@@ -44,13 +44,18 @@
   var urlEl = document.querySelector('#url');
   var devEl = document.querySelector('#url-dev');
   
+  devEl.addEventListener('dblclick', function() { this.select(); });
+  
   document.querySelector('[readonly]').placeholder = 'https://'+ gitHost +'/'+ document.querySelector('[readonly]').placeholder;
   
   document.querySelectorAll('#url-host input[type="radio"]').forEach(function(item) {
     item.addEventListener('click', function() {
       gitHost = this.value;
       repoDomain = 'https://'+ gitHost +'/repo';
-      if (devEl.value != '') devEl.value = devEl.value.replace(/.*?\/repo/, repoDomain);
+      if (devEl.value != '') {
+        devEl.value = devEl.value.replace(/.*?\/repo/, repoDomain);
+        devEl.select();
+      }
     });
   });
 
