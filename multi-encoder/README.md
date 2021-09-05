@@ -3,6 +3,7 @@ Multi-Encoder
 
 This is a simple webpage that provides some basic encoding/decoding algorithms for the web. Quick & Dirty aka don't look at the code ;)
 
+ [`source`](https://github.com/internetwache/multi-encoder)
 
 #Available algorithms:
 
