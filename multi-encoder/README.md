@@ -5,6 +5,7 @@ This is a simple webpage that provides some basic encoding/decoding algorithms f
 
  [`source`](https://github.com/internetwache/multi-encoder)
 
+
 #Available algorithms:
 
 - Base64
