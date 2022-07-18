@@ -6,7 +6,6 @@ $(document).ready(function() {
       var data = $(area).val();
 
       doEncoding(data, enc, decode, function(ret) {
-        console.log(ret);
         $("#"+ enc +"_output").text(ret);
         if (ret == '') {
           $('.output').removeClass('active');
