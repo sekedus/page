@@ -1,3 +1,21 @@
 .creator {
   padding-left:15px;
 }
+.output {
+  position: relative;
+}
+.output .btn-clipboard {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  /* padding: 10px 9px; */
+  /* background: url(../images/clippy.svg) center/100% 100% no-repeat; */
+  opacity: 0;
+  /* transition: opacity .5s ease; */
+}
+.output.active .btn-clipboard {
+  opacity: 1;
+}
+.output .btn-clipboard svg {
+  width: 13px;
+}

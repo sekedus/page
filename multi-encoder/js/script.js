@@ -6,11 +6,33 @@ $(document).ready(function() {
       var data = $(area).val();
 
       doEncoding(data, enc, decode, function(ret) {
-        $("#"+enc+"_output").text(ret);
+        console.log(ret);
+        $("#"+ enc +"_output").text(ret);
+        if (ret == '') {
+          $('.output').removeClass('active');
+        } else {
+          $('.output').addClass('active');
+        }
       });
     })
   });
 
+  $('.btn-clipboard').html('<svg xmlns="http://www.w3.org/2000/svg" width=".92em" height="1em" viewBox="0 0 1000 1000"><path fill="currentColor" d="M128 768h256v64H128v-64z m320-384H128v64h320v-64z m128 192V448L384 640l192 192V704h320V576H576z m-288-64H128v64h160v-64zM128 704h160v-64H128v64z m576 64h64v128c-1 18-7 33-19 45s-27 18-45 19H64c-35 0-64-29-64-64V192c0-35 29-64 64-64h192C256 57 313 0 384 0s128 57 128 128h192c35 0 64 29 64 64v320h-64V320H64v576h640V768zM128 256h512c0-35-29-64-64-64h-64c-35 0-64-29-64-64s-29-64-64-64-64 29-64 64-29 64-64 64h-64c-35 0-64 29-64 64z" /></svg>');
+
+  var clipboard = new ClipboardJS('.btn-clipboard', {
+    target: function(trigger) {
+      return trigger.nextElementSibling;
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    $(e.trigger).addClass('btn-success');
+    setTimeout(function() { $(e.trigger).removeClass('btn-success'); }, 1000);
+    e.clearSelection();
+  });
+  clipboard.on('error', function(e) {
+    $(e.trigger).addClass('error');
+  });
 });
 
 
@@ -19,9 +41,9 @@ function doEncoding(data, encType, decode, callback) {
   var ret = "Error";
 
   //URL-encoding
-  if(encType === "url") {
+  if (encType === "url") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/%([a-zA-Z0-9]{2})/g,function(match) { return String.fromCharCode(parseInt(match.slice(1),16))});
     } else {
       for(i=0; i < data.length; i++)
@@ -31,9 +53,9 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "html") {
+  if (encType === "html") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/&#x(\d{2});/g,function(match) { return String.fromCharCode(parseInt(match.slice(3).replace(";",""),16))});
     } else {
       for(i=0; i < data.length; i++)
@@ -43,9 +65,9 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "aschex") {
+  if (encType === "aschex") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/([0-9a-fA-F]{2})/g,function(match) { return String.fromCharCode(parseInt(match,16))});
     } else {
       for(i=0; i < data.length; i++)
@@ -55,9 +77,9 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "jshex") {
+  if (encType === "jshex") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/(\\x[0-9a-fA-F]{2})/g,function(match) { return String.fromCharCode(parseInt(match.slice(2),16))});
     } else {
       for(i=0; i < data.length; i++)
@@ -67,18 +89,18 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "inthex") {
+  if (encType === "inthex") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = parseInt(data.toUpperCase().replace(/[^a-f0-9A-F]/gi,""),16);
     } else {
       ret = parseInt(data).toString(16).toUpperCase();
     }
   }
 
-  if(encType === "ascbin") {
+  if (encType === "ascbin") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/([0-1]{16})/g,function(match) { return String.fromCharCode(parseInt(match,2))});
     } else {
       for(i=0; i < data.length; i++)
@@ -93,18 +115,18 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "intbin") {
+  if (encType === "intbin") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = parseInt(data.replace(/[^0-1]/gi,""),2);
     } else {
       ret = parseInt(data).toString(2);
     }
   }
 
-  if(encType === "ascoct") {
+  if (encType === "ascoct") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/([0-7]{3})/g,function(match) { return String.fromCharCode(parseInt(match,8))});
     } else {
       for(i=0; i < data.length; i++)
@@ -119,18 +141,18 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "intoct") {
+  if (encType === "intoct") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = parseInt(data.replace(/[^0-7]/gi,""),8);
     } else {
       ret = parseInt(data).toString(8);
     }
   }
 
-  if(encType === "jsoct") {
+  if (encType === "jsoct") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/(\\[0-7]{3})/g,function(match) { return String.fromCharCode(parseInt(match.slice(1),8))});
     } else {
       for(i=0; i < data.length; i++)
@@ -145,18 +167,18 @@ function doEncoding(data, encType, decode, callback) {
     }
   }
 
-  if(encType === "b64") {
+  if (encType === "b64") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = $.base64.decode(data);
     } else {
       ret = $.base64.encode(data);
     }
   }
 
-  if(encType === "uni") {
+  if (encType === "uni") {
     ret = "";
-    if(decode) {
+    if (decode) {
       ret = data.replace(/(\\u[0-9a-fA-F]{4})/g,function(match) { return String.fromCharCode(parseInt(match.slice(2),16))});
     } else {
       for(i=0; i < data.length; i++)
