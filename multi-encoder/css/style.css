@@ -1,8 +1,6 @@
-html {
-  scroll-behavior: smooth;
-}
-.creator {
-  padding-left:15px;
+.creator .by {
+  display: block;
+  padding: 10px 15px;
 }
 .output {
   position: relative;
@@ -22,7 +20,6 @@ html {
 .output .btn-clipboard svg {
   width: 13px;
 }
-
 .back-to-top {
   position: fixed;
   right: 20px;
