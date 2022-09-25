@@ -2,7 +2,7 @@
 
 ### tools list
 
-- [preventclose (Prevent browser close tab)](https://sekedus.github.io/project/preventclose.htm)
+- [preventclose (Prevent browser close tab)](https://sekedus.github.io/page/preventclose.htm)
 - [bookmarklet (Bookmarklet Creator with Script Includer)](https://sekedus.github.io/page/bookmarklet/creator/)
 - [multi-encoder (basic encoding/decoding algorithms)](https://sekedus.github.io/page/multi-encoder/)
 - [regexify (Live JavaScript regex tester)](https://sekedus.github.io/page/regexify/)
