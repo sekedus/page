@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .creator {
   padding-left:15px;
 }
@@ -7,7 +10,7 @@
 .output .btn-clipboard {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 20px;
   /* padding: 10px 9px; */
   /* background: url(../images/clippy.svg) center/100% 100% no-repeat; */
   opacity: 0;
@@ -18,4 +21,10 @@
 }
 .output .btn-clipboard svg {
   width: 13px;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
