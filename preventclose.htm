@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<title>Prevent chrome from closing all tabs</title>
+<style>
+html,body{height:100%;}
+body{background:#131a22;color:#9fa6ad;margin:0;font:1.2em monospace;}
+*,*:before,*:after{outline:0;-webkit-box-sizing:border-box;box-sizing:border-box;}
+a,a:visited{color:#4c9ce2;text-decoration:none;}
+mark{background-color:#d0973c;color:#131a22;}
+#prevent-click{width:100%;height:100%;font-weight:bold;text-align:center;padding:50px 20px;}
+#desc{line-height:40px;font-size:1.7em;margin-bottom:20px;}
+#check{font-size:2em;padding:50px 20px;}
+#check .clicked{color:red;}
+#check .clicked.active{color:#63aa55;}
+#source{position:absolute;top:0;right:0;padding:10px 15px;}
+</style>
+</head>
+<body>
+<div id="prevent-click">
+<div id="desc">Just leave this tab open and your browser won't be closed automatically</div>
+<div id="note">NOTE:Due to a change in the API of Chrome, you will need to <mark>click anywhere on this page once</mark> to make this script work.</div>
+<!--<div id="click">Click <a href="javascript:void(0)">here</a></div>-->
+<div id="check">clicked: <span class="clicked">false</span></div>
+<div id="source"><a href="https://maki-chan.de/preventclosenodonations.htm" target="_blank">Source</a></div>
+</div>
+<script>
+// Source:https://maki-chan.de/preventclosenodonations.htm
+window.onbeforeunload = function() { return 'Would you really like to close your browser?'; }
+function clicked(e) {
+  if (e.type == 'mousedown' && e.button != '1') return;
+  var chk_click = document.querySelector('#check .clicked');
+  chk_click.innerHTML = 'true';
+  chk_click.classList.add('active');
+  //console.log(e.type +', '+ e.button);
+}
+document.body.addEventListener('click', clicked); //left click
+document.body.addEventListener('contextmenu', clicked); //right click
+document.body.addEventListener('mousedown', clicked); //mouse middle click
+</script>
+</body>
+</html>
