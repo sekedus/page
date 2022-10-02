@@ -6888,3 +6888,14 @@ select,
 .loaded .spinner {
   display: none;
 }
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .navbar, .navbar-default .navbar-brand {
+    color: #C5C8C6;
+  }
+  .navbar-default {
+    background-color: #373b41;
+    border-color: #25282c;
+  }
+}

@@ -11549,13 +11549,22 @@ function onmessage(event) {
   }
 }
 
+function darkmode(dark) {
+  if (dark) {
+	editor.setTheme("ace/theme/tomorrow_night");
+  } else {
+	editor.setTheme("ace/theme/chrome");
+  }
+}
+ 
 $(document).ready(function() {
   initWorker();
   $(window).resize();
   editor = ace.edit("editor");
-  editor.setTheme("ace/theme/chrome");
+  darkmode(window.matchMedia('(prefers-color-scheme: dark)').matches);
   var session = editor.getSession();
   session.setMode("ace/mode/text");
+  session.setTabSize(2);
   session.setUseWrapMode(true);
   session.setWrapLimitRange(null, null);
   editor.renderer.setPrintMarginColumn(80);
@@ -11571,6 +11580,10 @@ $(document).ready(function() {
   editor.on("change", function(content) {
     $(".status.format").text($(".formats").val());
     message(bytesToDisplay(editor.getValue().length, true));
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+	darkmode(event.matches);
   });
 
   for (var i in formats) {
