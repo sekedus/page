@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Detect if DevTools is open">
+<meta name="author" content="Sindre Sorhus">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>devtools-detect • Detect if DevTools is open</title>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+<style>
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.f_perfect {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.f_perfect .fp_content {
+  margin: auto;
+}
+
+.main h1 {
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 60px;
+}
+
+#devtools-state {
+  margin: 50px 0 36px 0;
+  font-size: 100px;
+  font-weight: 200;
+}
+
+#devtools-orientation {
+  margin-bottom: 40px;
+  font-size: 28px;
+  height: 28px;
+  font-weight: 100;
+}
+
+.instruction {
+  font-weight: 200;
+  color: #666;
+}
+
+.source-link {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+}
+</style>
+</head>
+<body>
+<a class="source-link" href="https://github.com/sindresorhus/devtools-detect" target="_blank" title="Source"><strong>Github</strong></a>
+<div class="container flex f_perfect">
+<section class="main span12 text-center fp_content">
+<h1>Is DevTools open?</h1>
+<h2 id="devtools-state"></h2>
+<h3 id="devtools-orientation"></h3>
+<div class="instruction">Try it out by opening DevTools</div>
+</section>
+</div>
+<script type="module">
+import devtools from './index.js';
+
+const stateElement = document.querySelector('#devtools-state');
+const orientationElement = document.querySelector('#devtools-orientation');
+
+function devChange(e) {
+  var is_open = 'detail' in e ? e.detail.isOpen : false;
+
+  // https://stackoverflow.com/a/71794156/7598333
+  console.log(Object.defineProperties(new Error, {
+    message: {get() { is_open = true; /* Chromium or Firefox*/ }},
+    toString: {value() { if ((new Error).stack.includes('toString@')) is_open = true; /* Safari */ }}
+  }));
+
+  console.log(is_open);
+  
+  devtools.isOpen = is_open;
+  stateElement.textContent = devtools.isOpen ? 'yes' : 'no';
+  orientationElement.textContent = devtools.orientation ? devtools.orientation : '';
+}
+
+window.addEventListener('load', devChange);
+window.addEventListener('resize', devChange);
+window.addEventListener('devtoolschange', devChange);
+</script>
+</body>
+</html>
