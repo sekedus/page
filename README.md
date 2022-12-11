@@ -9,5 +9,6 @@
 - [gitcdn (A powerful CDN for Github files)](https://sekedus.github.io/page/gitcdn/)
 - [character-entity (Character Entity Reference Chart)](https://sekedus.github.io/page/character-entity/)
 - [alchemize (Minify & pretty-print)](https://sekedus.github.io/page/alchemize/)
+- [devtools-detect (Detect if DevTools is open)](https://sekedus.github.io/page/devtools-detect/)
 
 by [`Sekedus`](https://sekedus.blogspot.com)
