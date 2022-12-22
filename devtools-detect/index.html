@@ -130,8 +130,8 @@ const stateElement = document.querySelector('#devtools-state');
 const orientationElement = document.querySelector('#devtools-orientation');
 
 function devChange(e) {
-  var open = 'detail' in e ? e.detail.isOpen : false;
-  var side = 'detail' in e ? e.detail.orientation : '';
+  let open = 'detail' in e ? e.detail.isOpen : false;
+  const side = 'detail' in e ? e.detail.orientation : '';
 
   // console.log(e.type, open);
 
