@@ -1,3 +1,7 @@
+textarea {
+  resize: vertical;
+  min-height: 114px;
+}
 .creator .by {
   display: block;
   padding: 10px 15px;
@@ -7,12 +11,13 @@
 }
 .output .btn-clipboard {
   position: absolute;
-  top: 5px;
+  top: -15px;
   right: 20px;
   /* padding: 10px 9px; */
   /* background: url(../images/clippy.svg) center/100% 100% no-repeat; */
   opacity: 0;
   /* transition: opacity .5s ease; */
+  padding: 5px 6px 5px 8px;
 }
 .output.active .btn-clipboard {
   opacity: 1;
