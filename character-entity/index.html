@@ -20,10 +20,14 @@ td.uni { padding-bottom: 5px; }
 tr:hover .desc { display: block; top: 100%; left: 0; }
 .link { margin: 10px 15px; text-align: right; }
 .link a { display: inline-block; padding: 10px; font-weight: 700; }
+.info { position: sticky; top: 0; z-index: 1; font-weight: bold; text-align: center; }
+.info span { padding: 5px 10px; background-color: #fff; color: red; }
+.go-to { position: fixed; right: 15px; bottom: 15px; }
 </style>
 </head>
 <body>
 <div class="link"><a href="https://www.quackit.com/character_sets/unicode/" target="_blank">Reference 1</a><a href="https://www.compart.com/en/unicode" target="_blank">Reference 2</a><a href="https://github.com/flopp/invisible-characters" target="_blank">Reference 3</a><a href="http://web.archive.org/web/20220613064825/https://dev.w3.org/html5/html-author/charref" target="_blank">Source</a></div>
+<div class="info"><span>Double click to selection</span></div>
 <table>
 <tr title="CHARACTER TABULATION"><td class="character"> &#x0009;<td class="named"><code>&amp;Tab;</code><td class="hex"><code>&amp;#x0009;</code><td class="dec"><code>&amp;#9;</code><td class="uni"><code>U+0009</code><td class="desc">CHARACTER TABULATION
 <tr title="LINE FEED (LF)"><td class="character"> &#x000A;<td class="named"><code>&amp;NewLine;</code><td class="hex"><code>&amp;#x000A;</code><td class="dec"><code>&amp;#10;</code><td class="uni"><code>U+000A</code><td class="desc">LINE FEED (LF)
@@ -1481,15 +1485,8 @@ tr:hover .desc { display: block; top: 100%; left: 0; }
 <tr title="MATHEMATICAL DOUBLE-STRUCK SMALL Y"><td class="character"> &#x1D56A;<td class="named"><code>&amp;yopf;</code><td class="hex"><code>&amp;#x1D56A;</code><td class="dec"><code>&amp;#120170;</code><td class="uni"><code>U+1D56A</code><td class="desc">MATHEMATICAL DOUBLE-STRUCK SMALL Y
 <tr title="MATHEMATICAL DOUBLE-STRUCK SMALL Z"><td class="character"> &#x1D56B;<td class="named"><code>&amp;zopf;</code><td class="hex"><code>&amp;#x1D56B;</code><td class="dec"><code>&amp;#120171;</code><td class="uni"><code>U+1D56B</code><td class="desc">MATHEMATICAL DOUBLE-STRUCK SMALL Z
 </table>
+<div class="go-to"><button class="top">▲</button><button class="bottom">▼</button></div>
 <script>
-// Multiple events to a listener https://stackoverflow.com/a/8797106/7598333
-function multiAddEventListener(element, eventNames, handler) {
-  var events = eventNames.split(' ');
-  events.forEach(function(item) {
-    element.addEventListener(item, handler, false);
-  });
-}
-
 // Selecting text in an element https://stackoverflow.com/a/987376/7598333
 function selectText(node) {
   if (document.body.createTextRange) {
@@ -1508,8 +1505,18 @@ function selectText(node) {
 }
 
 document.querySelectorAll('code').forEach(function(item) {
-  multiAddEventListener(item, 'touchend dblclick', function() {
+  item.addEventListener('dblclick', function() {
     selectText(item);
+  });
+});
+
+document.querySelectorAll('.go-to button').forEach(function(item) {
+  item.addEventListener('click', function() {
+    if (item.classList.contains('top')) {
+      document.body.scrollIntoView();
+    } else {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   });
 });
 </script>
