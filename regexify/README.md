@@ -1,2 +1,3 @@
 # Regexify
-Live JavaScript regex tester [`source`](https://github.com/loonkwil/regexify)
+
+Moved to: https://github.com/sekedus/regexify
