@@ -9,6 +9,6 @@
 - [character-entity (Character Entity Reference Chart)](https://sekedus.github.io/page/character-entity/)
 - [alchemize (Minify & pretty-print)](https://sekedus.github.io/page/alchemize/)
 - [devtools-detect (Detect if DevTools is open)](https://sekedus.github.io/page/devtools-detect/)
-- [jadwal-shalat (Jadwal Shalat Indonesia)](https://sekedus.github.io/page/jadwal-shalat/)
+- [jadwal-shalat (Jadwal Shalat Indonesia)](https://sekedus.github.io/adzaan/)
 
 by [`Sekedus`](https://sekedus.blogspot.com)
